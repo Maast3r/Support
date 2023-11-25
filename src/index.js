@@ -75,13 +75,13 @@ app.whenReady().then(async () => {
 });
 
 const togglePlugin = ({ plugin, pluginManager }) => {
-    return () => {
+    return async () => {
         plugin.checked = !plugin.checked;
         if (plugin.checked) {
-            pluginManager.connectPlugin(plugin.plugin);
+            await pluginManager.connectPlugin(plugin.plugin);
             console.log('connected', plugin.label);
         } else {
-            pluginManager.disconnectPlugin(plugin.plugin);
+            await pluginManager.disconnectPlugin(plugin.plugin);
             console.log('disconnected', plugin.label);
         }
     };
