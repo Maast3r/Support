@@ -1,0 +1,25 @@
+{
+  "name": "support",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maast3r/Support.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maast3r/Support/issues"
+  },
+  "homepage": "https://github.com/Maast3r/Support#readme",
+  "dependencies": {
+    "electron": "^27.1.2",
+    "lcu-plugin-manager": "maast3r/lcu-plugin-manager",
+    "lcu-start-queue-plugin": "^2.0.0",
+    "lcu-tahm-kench-plugin": "^2.1.0"
+  }
+}
