@@ -3,37 +3,55 @@ const path = require('path');
 
 /**
  * todo:
- * create list of plugins
+ * settings - remember which plugins were toggled
+ * add quadrakill
+ * get a better icon
  *
  */
-console.log('asdf');
-
 const iconPath = path.join(__dirname, '../assets/IconTemplate.png');
-console.log(iconPath);
 
 app.whenReady().then(async () => {
-    const LcuPluginManager = await (await import('lcu-plugin-manager')).default;
-    const TahmKenchLcuPlugin = await (
-        await import('lcu-tahm-kench-plugin')
-    ).default;
-    const StartQueueLcuPlugin = await (
-        await import('lcu-start-queue-plugin')
-    ).default;
+    const { default: LcuPluginManager } = await import('lcu-plugin-manager');
+    const { default: TahmKenchLcuPlugin } = await import(
+        'lcu-tahm-kench-plugin'
+    );
+    const { default: StartQueueLcuPlugin } = await import(
+        'lcu-start-queue-plugin'
+    );
+    const { default: RequestPartyOwnerLcuPlugin } = await import(
+        'lcu-request-party-owner-plugin'
+    );
+    const { default: RejectPartyOwnerLcuPlugin } = await import(
+        'lcu-reject-party-owner-plugin'
+    );
 
     const plugins = {
         tahmKench: {
             checked: true,
             label: 'Tahm Kench',
-            plugin: TahmKenchLcuPlugin,
+            plugin: new TahmKenchLcuPlugin(),
         },
         startQueue: {
             checked: true,
             label: 'Start Queue',
-            plugin: StartQueueLcuPlugin,
+            plugin: new StartQueueLcuPlugin(),
+        },
+        requestPartyOwner: {
+            checked: true,
+            label: 'Request Party Owner',
+            plugin: new RequestPartyOwnerLcuPlugin(),
+        },
+        rejectPartyOwner: {
+            checked: true,
+            label: 'Reject Party Owner',
+            plugin: new RejectPartyOwnerLcuPlugin(),
         },
     };
 
-    const pluginManager = new LcuPluginManager(Object.values(plugins));
+    const pluginManager = new LcuPluginManager(
+        Object.values(plugins).map((pluginItem) => pluginItem.plugin)
+    );
+    pluginManager.start();
 
     console.log('readyyy');
     const tray = new Tray(iconPath);
@@ -60,11 +78,11 @@ const togglePlugin = ({ plugin, pluginManager }) => {
     return () => {
         plugin.checked = !plugin.checked;
         if (plugin.checked) {
-            pluginManager.connectPlugin(plugin);
-            console.log('connected', plugin);
+            pluginManager.connectPlugin(plugin.plugin);
+            console.log('connected', plugin.label);
         } else {
-            pluginManager.disconnectPlugin(plugin);
-            console.log('disconnected', plugin);
+            pluginManager.disconnectPlugin(plugin.plugin);
+            console.log('disconnected', plugin.label);
         }
     };
 };
