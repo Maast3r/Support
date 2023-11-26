@@ -18,10 +18,11 @@
   "homepage": "https://github.com/Maast3r/Support#readme",
   "dependencies": {
     "electron": "^27.1.2",
+    "electron-store": "^8.1.0",
     "lcu-plugin-manager": "^3.0.0",
-    "lcu-tahm-kench-plugin": "^2.1.1",
-    "lcu-start-queue-plugin": "^2.1.1",
+    "lcu-reject-party-owner-plugin": "^2.0.1",
     "lcu-request-party-owner-plugin": "^2.0.1",
-    "lcu-reject-party-owner-plugin": "^2.0.1"
+    "lcu-start-queue-plugin": "^2.1.1",
+    "lcu-tahm-kench-plugin": "^2.1.1"
   }
 }
