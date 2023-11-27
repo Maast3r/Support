@@ -12,8 +12,7 @@ const { getAllPlugins } = require('./plugins');
  */
 const iconPath = path.join(__dirname, '../assets/IconTemplate.png');
 
-app.whenReady().then(async () => {
-    const store = await loadStore();
+const startPluginManager = async (store) => {
     const { default: LcuPluginManager } = await import('lcu-plugin-manager');
 
     const plugins = Object.values(await getAllPlugins()).map((plugin) => ({
@@ -23,23 +22,11 @@ app.whenReady().then(async () => {
     const pluginManager = new LcuPluginManager(
         Object.values(plugins).map((pluginItem) => pluginItem.plugin)
     );
+
     pluginManager.start();
 
-    const tray = new Tray(iconPath);
-    const pluginItems = Object.values(plugins).map((plugin) => ({
-        label: plugin.label,
-        checked: plugin.checked,
-        click: togglePlugin({ plugin, pluginManager, store }),
-        type: 'checkbox',
-    }));
-    const contextMenu = Menu.buildFromTemplate([
-        ...pluginItems,
-        { type: 'separator' },
-        { label: 'Quit', role: 'quit' },
-    ]);
-    tray.setToolTip('Support for League of Legends');
-    tray.setContextMenu(contextMenu);
-});
+    return { pluginManager, plugins };
+};
 
 const togglePlugin = ({ plugin, pluginManager, store }) => {
     return async () => {
@@ -55,3 +42,28 @@ const togglePlugin = ({ plugin, pluginManager, store }) => {
         }
     };
 };
+
+const startTray = ({ pluginManager, plugins, store }) => {
+    const tray = new Tray(iconPath);
+    const pluginItems = Object.values(plugins).map((plugin) => ({
+        checked: plugin.checked,
+        click: togglePlugin({ plugin, pluginManager, store }),
+        label: plugin.label,
+        type: 'checkbox',
+    }));
+    const contextMenu = Menu.buildFromTemplate([
+        ...pluginItems,
+        { type: 'separator' },
+        { label: 'Quit', role: 'quit' },
+    ]);
+
+    tray.setTitle('Support');
+    tray.setToolTip('Support for League of Legends');
+    tray.setContextMenu(contextMenu);
+};
+
+app.whenReady().then(async () => {
+    const store = await loadStore();
+    const { pluginManager, plugins } = await startPluginManager(store);
+    startTray({ pluginManager, plugins, store });
+});
