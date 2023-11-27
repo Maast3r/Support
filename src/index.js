@@ -7,7 +7,7 @@ const { getAllPlugins } = require('./plugins');
 /**
  * todo:
  * add quadrakill
- * get a better icon
+ * create exe
  *
  */
 const iconPath = path.join(__dirname, '../assets/IconTemplate.png');
@@ -37,7 +37,7 @@ app.whenReady().then(async () => {
         { type: 'separator' },
         { label: 'Quit', role: 'quit' },
     ]);
-    tray.setToolTip('This is my application.');
+    tray.setToolTip('Support for League of Legends');
     tray.setContextMenu(contextMenu);
 });
 
