@@ -24,6 +24,7 @@
     "lcu-reject-party-owner-plugin": "^2.0.1",
     "lcu-request-party-owner-plugin": "^2.0.1",
     "lcu-start-queue-plugin": "^2.1.1",
-    "lcu-tahm-kench-plugin": "^2.1.1"
+    "lcu-tahm-kench-plugin": "^2.1.1",
+    "quadrakill": "maast3r/Quadrakill"
   }
 }
