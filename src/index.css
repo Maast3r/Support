@@ -1,0 +1,171 @@
+body {
+    background: #333232;
+    color: #D8AA24;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        Helvetica, Arial, sans-serif;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+.plugin {
+    height: 75px;
+    margin: 0 20px;
+}
+
+.plugin-name {
+    font-weight: bold;
+    height: 25px;
+}
+
+.checkbox-wrapper {
+    height: 30px;
+    position: relative;
+    width: 60px;
+}
+
+.checkbox {
+    background: none;
+    cursor: pointer;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    z-index: 2;
+}
+.checkbox:checked + .toggle {
+    border-color: #D8AA24;
+}
+.checkbox:checked + .toggle:after {
+    left: 50%;
+    background: #D8AA24;
+}
+
+.toggle {
+    background: #FFFFFF;
+    border: 4px solid #FFFFFF;
+    border-radius: 25px;
+    box-sizing: border-box;
+    display: block;
+    height: 100%;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+.toggle:after,
+.toggle:before {
+    display: block;
+    position: relative;
+    content: "";
+    width: 50%;
+    height: 100%;
+}
+.toggle:after {
+    background: #333232;
+    border-radius: 20px;
+    content: "";
+    left: 0;
+    transition: all 0.2s ease;
+}
+.toggle:before {
+    display: none;
+}
+
+.quadrakill {
+    margin: 0 20px;
+}
+
+.sound {
+    margin: 20px;
+}
+
+.sound-name {
+    font-weight: bold;
+}
+
+.sound-path-wrapper {
+    margin-top: 10px;
+    position: relative;
+}
+
+.sound-path {
+    border: 3px solid #fff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #333232;
+    color: #D8AA24;
+    display: block;
+    height: 50px;
+    padding: 10px;
+    width: 100%;
+}
+.sound-path:focus-visible {
+    outline: none;
+}
+.sound-path:focus,
+.sound-path:not(:placeholder-shown) {
+    border-color: #D8AA24;
+}
+.sound-path:focus + .sound-path-label,
+.sound-path:not(:placeholder-shown) + .sound-path-label {
+    background-color: #333232;
+    color: #D8AA24;
+    padding: 0 10px;
+    transform: translate(0px, -105%) scale(0.8);
+}
+
+.sound-path-label {
+    background-color: transparent;
+    color: white;
+    left: 15px;
+    pointer-events: none;
+    position: absolute;
+    top: 15px;
+    transform-origin: 0 0;
+    transition: transform 120ms ease-in;
+}
+
+.sound-volume-wrapper {
+    display: block;
+    margin: 20px 0;
+    position: relative;
+    width: 100%;
+}
+
+.sound-volume {
+    appearance: none;
+    border-radius: 20px;
+    display: block;
+    height: 20px;
+    outline: none;
+    width: 100%;
+}
+.sound-volume::-webkit-slider-thumb {
+    appearance: none;
+    background-color: #D8AA24;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+}
+
+.sound-volume-value {
+    align-items: center;
+    background-color: #D8AA24;
+    border-radius: 10px;
+    color: #333232;
+    display: flex;
+    font-weight: 500;
+    height: 30px;
+    justify-content: center;
+    text-align: center;
+    padding: 5px;
+    pointer-events: none;
+    position: absolute;
+    top: -10px;
+    width: 30px;
+}
