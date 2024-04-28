@@ -4,6 +4,7 @@ const ELIGIBLE_PLAYERS = new Set([
     'Mike Cheek',
     'baseballover723',
     'Doomerdinger',
+    'ImStuckSettBro',
 ]);
 
 const GAME_EVENTS_TO_AUDIO = {

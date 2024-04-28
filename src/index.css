@@ -1,3 +1,7 @@
+html {
+    max-width: 490px;
+}
+
 body {
     background: #333232;
     color: #D8AA24;
@@ -10,9 +14,20 @@ h1 {
     text-align: center;
 }
 
+.plugins {
+    margin: 0 20px;
+}
+
+.plugins-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+.plugins-wrapper > div {
+    width: 50%;
+}
+
 .plugin {
     height: 75px;
-    margin: 0 20px;
 }
 
 .plugin-name {
@@ -79,12 +94,31 @@ h1 {
     margin: 0 20px;
 }
 
+.quadrakill-name-and-toggle {
+    align-items: center;
+    display: flex;
+}
+.quadrakill-name-and-toggle > h2 {
+    display: inline-block;
+}
+.quadrakill-toggle {
+    display: inline-block;
+    margin-left: 20px;
+}
+
 .sound {
-    margin: 20px;
+    margin: 20px 0;
+}
+.sound:first-child {
+    margin-top: 0;
 }
 
 .sound-name {
+    color: #FFFFFF;
     font-weight: bold;
+}
+.sound-name:has(+ .sound-path-wrapper > .sound-path:not(:placeholder-shown)) {
+    color: #D8AA24;
 }
 
 .sound-path-wrapper {
@@ -140,7 +174,7 @@ h1 {
     appearance: none;
     border-radius: 20px;
     display: block;
-    height: 20px;
+    height: 10px;
     outline: none;
     width: 100%;
 }
@@ -166,6 +200,6 @@ h1 {
     padding: 5px;
     pointer-events: none;
     position: absolute;
-    top: -10px;
+    top: -15px;
     width: 30px;
 }

@@ -172,8 +172,7 @@ const createSettingsWindow = () => {
     const settingsWindow = new BrowserWindow({
         center: true,
         icon: iconPath,
-        minHeight: 800,
-        minWidth: 800,
+        maxWidth: 490,
         resizeable: false,
         show: false,
         title: 'Support',

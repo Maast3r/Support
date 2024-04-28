@@ -153,12 +153,17 @@ const App = () => {
     return (
         <div>
             <h1>Support Settings</h1>
-            {pluginsDisplay()}
+            <div className='plugins'>
+                <h2>Plugins</h2>
+                <div className='plugins-wrapper'>
+                    {pluginsDisplay()}
+                </div>
+            </div>
             {window.quadrakill.enabled && (
-                <>
-                    <div className='quadrakill'>
-                        <div>Quadrakill</div>
-                        <div className='checkbox-wrapper'>
+                <div className='quadrakill'>
+                    <div className='quadrakill-name-and-toggle'>
+                        <h2>Quadrakill</h2>
+                        <div className='checkbox-wrapper quadrakill-toggle'>
                             <input
                                 checked={quadrakillConnected}
                                 className='checkbox'
@@ -168,8 +173,10 @@ const App = () => {
                             <div className='toggle'></div>
                         </div>
                     </div>
-                    {soundsDisplay()}
-                </>
+                    <div>
+                        {soundsDisplay()}
+                    </div>
+                </div>
             )}
         </div>
     );
